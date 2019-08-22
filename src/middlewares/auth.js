@@ -15,9 +15,6 @@ module.exports = (request, response, next) => {
         return response.status(401).send({ error: 'Token errado!' });
 
     //const [ header, payload, signature ] = parts;
-    
-    /*if(!/^Bearer$/i.test(scheme))
-        return response.status(401).send({ error: 'Token mal formado!' });*/
 
     jwt.verify(token, authConfig.secret, (err, decoded) => {
         if(err) return response.status(401).send({ error: 'Token inválido!' });
